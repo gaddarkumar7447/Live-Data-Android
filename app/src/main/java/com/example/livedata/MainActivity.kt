@@ -12,14 +12,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var modelClass: ViewModelClass
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        modelClass = ViewModelProvider(this)[ViewModelClass ::class.java]
+        modelClass = ViewModelProvider(this)[ViewModelClass::class.java]
 
         modelClass.total.observe(this) {
             binding.textShow.text = it.toString()
         }
-
 
         binding.button.setOnClickListener(View.OnClickListener {
             modelClass.getTotal(binding.editText.text.toString().toInt())
