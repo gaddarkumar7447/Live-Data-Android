@@ -38,4 +38,9 @@ class LifeObserber : LifecycleObserver {
     fun obserber6(){
         Log.d("TAG", "Observer On Any")
     }*/
+    var a = 0
+    fun dataShow() : Int{
+        return a++
+    }
+
 }
