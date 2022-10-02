@@ -21,19 +21,29 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(LifeObserber())
         Log.d("TAG", "Activity on Create")
 
-        modelView = ViewModelProvider(this)[ModelView::class.java]
+        modelView = ViewModelProvider(this, ModeViewFactory(10))[ModelView::class.java]
 
         inCre()
         setText()
+        deCrement()
+
     }
+
     private fun setText(){
         dataBinding.textShow.text = modelView.count.toString()
     }
 
     private fun inCre(){
-        dataBinding.button.setOnClickListener(View.OnClickListener {
+        dataBinding.Increment.setOnClickListener(View.OnClickListener {
             modelView.getData()
+            setText()
         })
-        setText()
+    }
+
+    private fun deCrement(){
+        dataBinding.decremet.setOnClickListener(View.OnClickListener {
+            modelView.decrement()
+            setText()
+        })
     }
 }

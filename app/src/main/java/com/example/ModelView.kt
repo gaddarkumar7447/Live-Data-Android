@@ -4,10 +4,15 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlin.math.log
 
-class ModelView : ViewModel(){
-   var count = 0
+class ModelView(var lateIni : Int) : ViewModel(){
+   var count = lateIni
 
     fun getData() : Int{
         return count++
     }
+
+    fun decrement() : Int{
+        return count--
+    }
+
 }
